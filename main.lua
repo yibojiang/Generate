@@ -1,8 +1,5 @@
 
 math.tau = math.pi * 2
-
-
-
 realTimer=0
 dayTimer=0
 day=0
@@ -47,7 +44,11 @@ sound.note[6]=love.audio.newSource("sounds/note6.mp3", "static")
 
 curEnemyIndex=1
 
+
+
 function love.load()
+	
+	
 	math.randomseed(os.time())
 	math.random()
 	math.random()
@@ -149,8 +150,8 @@ function love.update(dt)
 	
 	bgHSBColor.h=0.6
 	bgHSBColor.s=1
-	--bgHSBColor.b=brightness
-	bgHSBColor.b=1
+	bgHSBColor.b=brightness
+	-- bgHSBColor.b=1
 	--local bc=HSBColor.getNearColor(bgHSBColor,120)
 	local bc=HSBColor.toColor(bgHSBColor)
 	
@@ -163,13 +164,13 @@ function love.update(dt)
 end
 
 
-pacwidth = math.pi / 6 -- size of his mouth
+-- pacwidth = math.pi / 6 -- size of his mouth
 
 
 function love.draw()
 	
 	--love.graphics.setBlendMode("additive")
-	--love.graphics.setBlendMode("alpha")
+	-- love.graphics.setBlendMode("alpha")
 	--love.graphics.setBlendMode("multiplicative")
 	--love.graphics.setBlendMode("subtractive")
 	--love.graphics.setBlendMode("premultiplied")
@@ -178,9 +179,9 @@ function love.draw()
 	--love.graphics.arc( "fill", 400, 300, 100, pacwidth, (math.pi * 2) - pacwidth )
 
 
-	love.graphics.setBlendMode("multiplicative")
-	love.graphics.setColor(0,0,0,(1-brightness)*250)
-	love.graphics.rectangle("fill", 0, 0,windowsWidth,windowsHeight)
+	-- love.graphics.setBlendMode("multiplicative")
+	-- love.graphics.setColor(0,0,0,(1-brightness)*250)
+	-- love.graphics.rectangle("fill", 0, 0,windowsWidth,windowsHeight)
 	
 	camera:set()
 	
@@ -191,8 +192,8 @@ function love.draw()
 	stimulation.draw()
 	signal.draw()
 	
-	--love.graphics.setColor(255,255,255,255*brightness)
-    love.graphics.setColor(255,255,255,255)
+	love.graphics.setColor(255,255,255,255*brightness)
+    -- love.graphics.setColor(255,255,255,255)
 	love.graphics.setBlendMode("additive")
 	--love.graphics.draw(glow, 30, 30,0,10,10)
 	
@@ -272,10 +273,10 @@ function love.draw()
 
 	--love.graphics.print("isPlayer: "..enemies[curEnemyIndex].isPlayer, 10, 140)
 	
-	--if dayTimer<5 or dayTimer>30-5 then
+	-- if dayTimer<5 or dayTimer>30-5 then
 	
-	--updateLight(brightness)
-	--end
+	-- 	updateLight(brightness)
+	-- end
 end
 
 function caculateAverage()
