@@ -5,6 +5,10 @@ camera.scaleX = 1
 camera.scaleY = 1
 camera.rotation = 0
 camera.target=nil
+camera.offset={}
+camera.offset.x=0
+camera.offset.y=0
+camera.speed=1
 function camera:set()
   love.graphics.push()
   love.graphics.rotate(-self.rotation)
@@ -33,7 +37,7 @@ end
 
 function camera:update(dt)
 	if self.target~=nil then
-		camera:move( (camera.target.x-camera._x-windowsWidth/2) *dt, (camera.target.y-camera._y-windowsHeight/2)*dt)
+		camera:move( (camera.target.x-camera._x-windowsWidth/2+camera.offset.x) *dt*camera.speed, (camera.target.y-camera._y-windowsHeight/2+camera.offset.y)*dt*camera.speed)
 	end
 end
 

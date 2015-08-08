@@ -13,6 +13,7 @@ dtFactor=1
 brightness=0
 
 showDebug=false
+showTutorial=true
 
 bgHSBColor={h=0,s=0,b=0,a=1}
 
@@ -158,14 +159,142 @@ function love.update(dt)
 	love.graphics.setBackgroundColor(bc.r,bc.g,bc.b,bc.a)
 	
 	camera:update(dt)
-
+	
 	brightness=math.sin(dayTimer/dayTime*math.pi*2)+0.5
 	brightness=math.clamp(brightness,0,1)
+	
+	updateTutorial(dt)
 end
 
+tutorialTimer=0
+function updateTutorial(dt)
+	tutorialTimer=tutorialTimer+dt
+	
+	if tutorialStage==0 or tutorialStage==3 or tutorialStage==5 or tutorialStage==6 or tutorialStage==7 or tutorialStage==8 or tutorialStage==9 then
+		if tutorialTimer>tutorials[tutorialStage].interval then
+			tutorialTimer=0
+			tutorialStage=tutorialStage+1
+		end
+	end
 
+	if tutorialStage==1 then
+		tutorialStage=2
+		tutorialTimer=0
+	end
+
+	if tutorialStage==2 then
+		if table.getn(foodArray)>4 then
+			tutorialStage=3
+			tutorialTimer=0
+		end
+	end
+
+	if tutorialStage==4 then
+		if #enemies>4 then
+			tutorialStage=5
+			tutorialTimer=0
+		end
+	end
+
+	-- if tutorialStage==7 then
+	-- 	if love.keyboard.isDown("tab") then
+	-- 		tutorialStage=8
+	-- 		tutorialTimer=0
+	-- 	end
+	-- end
+
+
+
+	for i=1,table.getn(tutorials) do
+		if i<=tutorialStage then
+			tutorials[i].color[4]=tutorials[i].color[4]+10
+		else
+			-- tutorials[i].alpha=tutorials[i].alpha-10
+		end
+
+		if tutorials[i].color[4]<0 then 
+			tutorials[i].color[4]=0
+		end
+
+		if tutorials[i].color[4]>255 then 
+			tutorials[i].color[4]=255
+		end
+	end
+
+	tutorialStage=math.clamp(tutorialStage,1,#tutorials+1)
+end
 -- pacwidth = math.pi / 6 -- size of his mouth
+tutorialStage=1
+tutorials={}
+tutorials[1]={}
+tutorials[1].text="This is a stimulated ecosystem."
+tutorials[1].x=10
+tutorials[1].y=10;
+tutorials[1].interval=5
+tutorials[1].color={255,255,255,0}
 
+tutorials[2]={}
+tutorials[2].text="Left click mouse to spawn spores."
+tutorials[2].x=10
+tutorials[2].y=30;
+tutorials[2].interval=5
+tutorials[2].color={255,255,0,0}
+
+tutorials[3]={}
+tutorials[3].text="Spore can self grow at daytime, and reproduce itelf."
+tutorials[3].x=10
+tutorials[3].y=50;
+tutorials[3].interval=3
+tutorials[3].color={255,255,255,0}
+
+tutorials[4]={}
+tutorials[4].text="Right click mouse to spawn predators."
+tutorials[4].x=10
+tutorials[4].y=70;
+tutorials[4].interval=5
+tutorials[4].color={255,255,0,0}
+
+tutorials[5]={}
+tutorials[5].text="Predators feed on spores, if run of spores, predators will soon die."
+tutorials[5].x=10
+tutorials[5].y=90;
+tutorials[5].interval=3
+tutorials[5].color={255,255,255,0}
+
+tutorials[6]={}
+tutorials[6].text="As predators grows up, they will mate and reproduce next generation."
+tutorials[6].x=10
+tutorials[6].y=110;
+tutorials[6].interval=2
+tutorials[6].color={255,255,255,0}
+
+tutorials[7]={}
+tutorials[7].text="'Q' - Speed up. 'W' - Default speed. 'R' - Slow down."
+tutorials[7].x=10
+tutorials[7].y=130;
+tutorials[7].interval=2
+tutorials[7].color={255,255,0,0}
+
+tutorials[8]={}
+tutorials[8].text="'O' - Zoom out. 'I' - Zoom in, 'D' - toggle their status. "
+tutorials[8].x=10
+tutorials[8].y=150;
+tutorials[8].interval=2
+tutorials[8].color={255,255,0,0}
+
+tutorials[9]={}
+tutorials[9].text="'TAB' - switch between the predators."
+tutorials[9].x=10
+tutorials[9].y=170;
+tutorials[9].interval=2
+tutorials[9].color={255,255,0,0}
+
+tutorials[10]={}
+tutorials[10].text="'T' - toggle the interface"
+tutorials[10].x=10
+tutorials[10].y=190;
+tutorials[10].interval=2
+tutorials[10].color={255,255,0,0}
 
 function love.draw()
 	
@@ -184,7 +313,14 @@ function love.draw()
 	-- love.graphics.rectangle("fill", 0, 0,windowsWidth,windowsHeight)
 	
 	camera:set()
+
+
+
+	love.graphics.setColor(255,255,255,255*brightness)
+
 	
+	-- love.graphics.printf("This text is aligned center.",windowsWidth/2-100, windowsHeight/2, 200,"left")
+
 	light.draw()
 	love.graphics.setBlendMode("alpha")
 	enemy.draw()
@@ -209,7 +345,22 @@ function love.draw()
 	
 
 
-	love.graphics.setColor(255,255,255,255)
+	-- love.graphics.setColor(255,255,255,tutorials[tutorialStage] )
+	-- love.graphics.print("Left click mouse to add producer.", 100,windowsHeight/2+100,0,1.5,1.5)
+	-- love.graphics.print(tutorials[1].color[1], 100,500,0,1.5,1.5)
+	-- love.graphics.print(tutorials[1].color[2], 100,500,0,1.5,1.5)
+	-- love.graphics.print(tutorials[1].color[3], 100,500,0,1.5,1.5)
+	love.graphics.setBlendMode("alpha")
+
+	if showTutorial then
+		for i=1, #tutorials do
+			
+			love.graphics.setColor(tutorials[i].color[1],tutorials[i].color[2],tutorials[i].color[3],tutorials[i].color[4] )
+			love.graphics.print(tutorials[i].text, tutorials[i].x,tutorials[i].y,0,1.5,1.5)
+
+		end
+	end
+
 	love.graphics.setBlendMode("alpha")
 	--love.graphics.print("by yibojiang", windowsWidth-100, windowsHeight-60)
 	
@@ -218,8 +369,14 @@ function love.draw()
 	end
 	
 	love.graphics.setColor(0,255,0,255)
+
+	-- love.graphics.print(tutorialStage, 0,0,0,1,1)
+
 	love.graphics.print("FPS: "..love.timer.getFPS(), 10, 20)
 	
+
+
+
 	if cmd.enable then
 		love.graphics.print( "Cmd: "..cmd.text, 10, 400 )
 	end
@@ -378,6 +535,8 @@ function love.mousepressed(x, y, button)
 		]]
 	end
 	
+	
+
 	if button == "r" then
 		selection[current].current=2
 		updateEditGene()
@@ -393,8 +552,16 @@ end
 
 
 function love.keypressed( key, unicode )
+
+	if key=="t" then
+		showTutorial=not showTutorial
+	end
 	if key=="q" then
 		dtFactor=dtFactor+0.5
+	end
+
+	if key == "m" then
+		tutorialStage=tutorialStage+1
 	end
 	
 	if key=="s" then

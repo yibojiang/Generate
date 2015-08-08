@@ -520,10 +520,10 @@
 	"buffers":
 	[
 		{
-			"file": "main.lua",
+			"file": "/Users/yibojiang/Documents/GameDevelop/Love2DProject/Splatoon/main.lua",
 			"settings":
 			{
-				"buffer_size": 9902,
+				"buffer_size": 9924,
 				"line_ending": "Windows"
 			}
 		}
@@ -614,8 +614,15 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/Users/yibojiang/Documents/GameDevelop/GenerationProject/Generate"
+	],
 	"file_history":
 	[
+		"/Users/yibojiang/Documents/GameDevelop/GenerationProject/Generate/modules/camera.lua",
+		"/Users/yibojiang/Documents/GameDevelop/GenerationProject/Generate/conf.lua",
+		"/Users/yibojiang/Documents/GameDevelop/GenerationProject/Generate/generate.sublime-project",
 		"/Users/yibojiang/Library/Application Support/Sublime Text 3/Packages/User/Love2d.sublime-build",
 		"/Users/yibojiang/Documents/GameDevelop/GenerationProject/Tmp/light.lua",
 		"/Users/yibojiang/Documents/GameDevelop/Spine-Runtimes/spine-love/spine-love/spine.lua",
@@ -740,14 +747,11 @@
 		"/Users/yibojiang/Documents/GameDevelop/CatBattle2Project/CatBattle2/Assets/Script/Enemies/EnemyWeapon/WeaponController.js",
 		"/Users/yibojiang/Documents/GameDevelop/CatBattle2Project/CatBattle2/Assets/Script/Enemies/EnemyWeapon/FireBallSuperWeaponController.js",
 		"/Users/yibojiang/Documents/GameDevelop/CatBattle2Project/CatBattle2/Assets/Script/Enemies/EnemyWeapon/MachineGun.js",
-		"/Users/yibojiang/Documents/GameDevelop/CatBattle2Project/CatBattle2/Assets/Script/Enemies/EnemyWeapon/SuperWeaponController.js",
-		"/Users/yibojiang/Documents/GameDevelop/CatBattle2Project/CatBattle2/Assets/Script/Room/WeaponObject/FireBall.js",
-		"/Users/yibojiang/Documents/GameDevelop/CatBattle2Project/CatBattle2/Assets/Script/UI/FireRangeUI.js",
-		"/Users/yibojiang/Documents/GameDevelop/CatBattle2Project/CatBattle2/Assets/Neo1900/Animation/FIshShipIdle.anim"
+		"/Users/yibojiang/Documents/GameDevelop/CatBattle2Project/CatBattle2/Assets/Script/Enemies/EnemyWeapon/SuperWeaponController.js"
 	],
 	"find":
 	{
-		"height": 31.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
@@ -766,6 +770,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"brightness",
+			"bgHSBColor",
+			"brightness",
+			"pacwidth",
+			"updateLight",
+			"brightness",
+			"updateLight",
 			"readyToWarpTime",
 			"screenShot",
 			"head",
@@ -886,14 +897,7 @@
 			"tmpinterval",
 			"_ability[i]",
 			"maxrange",
-			"detectenemy",
-			"hpbar",
-			"baseShip",
-			"customi",
-			"*/\n",
-			"-5",
-			"BaseAttribute",
-			"crewdata"
+			"detectenemy"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -937,28 +941,28 @@
 			[
 				{
 					"buffer": 0,
-					"file": "main.lua",
+					"file": "/Users/yibojiang/Documents/GameDevelop/Love2DProject/Splatoon/main.lua",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9902,
+						"buffer_size": 9924,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9446,
-								9447
+								0,
+								9924
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Lua Love/LuaLove.tmLanguage",
+							"syntax": "Packages/Lua/Lua.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 10070.0,
+						"translation.y": 294.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1019,6 +1023,14 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"camer",
+				"modules/camera.lua"
+			],
+			[
+				"",
+				"conf.lua"
+			],
 			[
 				"cmaerac",
 				"Script/Controller/CameraController.js"
@@ -1408,10 +1420,6 @@
 				"Script/UI/Menu/MainMenu.js"
 			],
 			[
-				"camer",
-				"Script/Controller/CameraController.js"
-			],
-			[
 				"message",
 				"Script/UI/Panel/MessageBox.js"
 			],
@@ -1526,10 +1534,6 @@
 			[
 				"bur",
 				"Script/Room/BurnLaserWeapon.js"
-			],
-			[
-				"enemym",
-				"Script/Manager/EnemyManager.js"
 			]
 		],
 		"width": 0.0
